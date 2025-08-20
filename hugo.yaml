@@ -1,4 +1,4 @@
-baseURL: http://example.org/
+baseURL: https://vetcoder.netlify.app
 languageCode: en-us 
 title: Acme Corporation 
 theme: Eclectic
