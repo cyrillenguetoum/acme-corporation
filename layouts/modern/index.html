@@ -1,29 +1,36 @@
 {{define "bodyClass"}} home {{end}}
+
 {{define "body"}}
 {{$title := default site.Title .Title}}
-  
-    <section id="intro">
-      {{with $title}}<h1>{{.}}</h1>{{end}}
-      {{with .Param "subtitle"}}<h2>{{. | humanize | markdownify}}</h2>{{end}}
-      <a href="{{ref . (.Param "explore")}}">Explore</a>
+    <section id="hero">
+      <img class="hero" src="{{partialCached "hero.svg.html" $ "nothing"}}" alt="Acme Corporation" width="24rem" />
+      <div class="intro">
+        {{with $title}}<h1>{{.}}</h1>{{end}}
+        {{with .Param "subtitle"}}<h2>{{. | humanize | markdownify}}</h2>{{end}}
+        <a href="{{ref . (.Param "explore")}}">Explore</a>
+        {{ partialCached "menu.html" (dict "Menu" site.Menus.footer) "footer" }}
+      </div>
     </section>
-    {{with resources.GetMatch "products.csv"}}
-    <section id="products">
+    {{with (partialCached "products.html" "cache")}}
+    <section id="store">
       <h1>Our Products</h1>
-      {{with . | transform.Unmarshal (dict "delimiter" ",")}}
-        <table>
-          {{range $i, $value := .}}
-            {{if eq $i 0}}<thead>{{end}}
-              <tr>
-                {{range $value}}
-                <td>{{.}}</td>
-                {{end}}
-              </tr>
-              {{if eq $i 0}}</thead>{{end}}
-            {{end}}
-        </table>
-      {{end}}
-      <a href="{{.Permalink}}" download>Download listing</a>
+      <ul>
+        {{range $name, $data := .}}
+        <li>
+          <a href="#">
+            {{$img := resources.GetMatch (print "image/products/" $name ".*") | images.Filter (images.Overlay (resources.GetMatch "image/watermark.*") 0 0 )}}
+            {{$img := $img.Resize "1000x"}}
+            <img src="{{$img.Permalink}}" alt="{{$name}}">
+            <h2>{{$name}}</h2>
+            <div class="price">$ {{$data.Price}}</div>
+            <div class="rating">
+              {{range (seq $data.Rating)}}&starf;{{end}}
+              {{- range seq (sub 5 ($data.Rating | int))}}&star;{{end}}
+            </div>
+          </a>
+        </li>
+        {{end}}
+      </ul>
     </section>
     {{end}}
     <section id="description">
@@ -59,6 +66,7 @@
           {{range first 3 .}}
           <li class="post">
             <a href="{{.Permalink}}">
+            <img alt="{{.Title}}" loading="lazy" src="{{ (.Resources.GetMatch "cover.*").Permalink }}" />
               <h2>
                 {{.Title}}
               </h2>

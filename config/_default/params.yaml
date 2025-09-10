@@ -6,7 +6,7 @@ author:
   location: New York
   phone: (999) 999-9999
   hours: "**Mon-Fri:** 9:00AM - 6:00PM, ET"
-color: "#4f46e5"
+color: "#DC2626"
 copyright: "Copyright &copy; 2022 Acme Corporation. All Rights Reserved."
 footer:
   - title: About

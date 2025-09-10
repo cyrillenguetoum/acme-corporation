@@ -1,4 +1,14 @@
-{{define "bodyClass"}} page {{end}}
-{{define "garbage"}}
-<!-- Never get rendered -->
+{{define "body"}} 
+<main>  
+    {{with .Title}} 
+    <h1>  
+        {{.}} 
+    </h1> 
+    {{end}} 
+    {{if .Param "toc"}} 
+        <h2>Table of Contents</h2> 
+            {{.TableOfContents}} 
+        {{end}} 
+    {{.Content}} 
+</main> 
 {{end}}
