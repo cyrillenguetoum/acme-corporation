@@ -980,6 +980,7 @@ body.page form .colors input[value=Blue] {
 }
 #search > div {
   opacity: 0;
+  display: none;
   background-color: #fff;
   position: absolute;
   right: 1rem;

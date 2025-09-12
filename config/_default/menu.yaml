@@ -7,3 +7,10 @@ main:
     name: Contact
     url: /contact
     weight: 200
+footer:  
+  - name: Privacy Policy
+    weight: 300
+    url: /privacy
+  - name: Terms of Use
+    weight: 200
+    url: /terms

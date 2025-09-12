@@ -38,3 +38,9 @@ about_us: >
   live in it.
 recent_posts:
   enable: true
+TermsandPrivacy:
+  company_name: Acme Corporation
+  contact_email: contact@example.org
+  website: https://hugoinaction.com
+  contact_dpo_email: dpo@hugoinaction.com
+  contact_dpo_phone: (999) 999-9999
