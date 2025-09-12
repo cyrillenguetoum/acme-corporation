@@ -1,4 +1,5 @@
 ---
+title: Acme Blog
 menu:
   main:
     name: Blog

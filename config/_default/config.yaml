@@ -1,7 +1,9 @@
 baseURL: https://vetcoder.netlify.app
 languageCode: en-us
 title: Acme Corporation
-theme: Eclectic
+theme: AcmeTheme
 enableEmoji: true
 enableGitInfo: true
+Pagination:
+  pagerSize: 3
 
