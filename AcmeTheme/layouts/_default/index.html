@@ -75,12 +75,22 @@
     <div>
       <ol>
         {{range .}}
-        <li>
-            <p>{{.content}}</p>
-            <div>
-              <h2>{{.author}}</h2>
-              <h3>{{.from}}</h3>
-            </div>
+        {{$author := default "" .author}}
+        {{$content := default "" .content}}
+        {{$from := default "" .from}}
+        {{if .tweet}}
+          {{$url := (print "https://publish.X.com/oembed?url=" .tweet)}} {{/* String concatenation in Hugo */}}
+          {{$url := (print $url "&omit_script=1&hide_media=1&hide_thread=1&dnt=true")}} {{/* String concatenation again */}}
+          {{$tweet := resources.GetRemote $url | transform.Unmarshal}} {{/* transform.Unmarshal is necessary to parse JSON here */}}
+          {{$author = $tweet.author_name}} {{/* Straightforward way to retrieve a key value from JSON */}}
+          {{$from = "via X"}}
+          {{$content = index $tweet "html" }} {{/* index is necessary to retrieve a key value with special characters; used for demonstration purposes */}}
+        {{end}}
+        <li><p>{{$content | safeHTML}}</p>
+          <div>
+            <h2>{{$author | title}}</h2>
+            <h3>{{$from}}</h3>
+          </div>
         </li>
         {{end}}
       </ol>

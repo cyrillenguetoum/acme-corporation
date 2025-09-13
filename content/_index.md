@@ -23,6 +23,8 @@ testimonials:
     content: >
              Undoubted accuracy. Safety guarantee.
              We love what Acme delivers.
+  
+  - tweet: https://x.com/atishay/status/1259605801968128000
 ---
 
 Acme is the **best**
@@ -47,3 +49,4 @@ Personalized especially for you
 We convert dreams into designs. Our artists are one of a kind. We provide full support for customizing your designs with multiple contact sessions to understand your problems and get a satisfying result.
 
 [Talk to us today](./contact)
+

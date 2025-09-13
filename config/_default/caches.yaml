@@ -1,0 +1,3 @@
+getResource:
+  dir: ':resourceDir/GetRemote'
+  maxAge: -1
