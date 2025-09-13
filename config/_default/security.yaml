@@ -1,3 +1,4 @@
 funcs:
   getenv:
     - NETLIFY
+    - COMMENTS_TOKEN
