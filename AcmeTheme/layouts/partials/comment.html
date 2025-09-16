@@ -17,7 +17,7 @@
       {{ with .Err }}
         {{warnf "%s" .}}
       {{ else }} 
-      src="{{ . RelPermalink }}"
+      src="{{ .RelPermalink }}"
       {{ end }}
     {{ end }}>
   <div class="author">{{.name}}</div>
