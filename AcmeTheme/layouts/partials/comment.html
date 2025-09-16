@@ -14,7 +14,7 @@
     {{ with resources.GetRemote (print 
       "https://www.gravatar.com/avatar/"
       (md5 .email) "?s=100&d=wavatar") }}
-      {{ with Err. }}
+      {{ with .Err }}
         {{warnf "%s" .}}
       {{ else }} 
       src="{{ . RelPermalink }}"
