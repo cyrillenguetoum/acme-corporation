@@ -1,7 +1,7 @@
 {{$response := newScratch}}
 {{if and site.Params.NetlifyCommentForm (getenv "COMMENTS_TOKEN")}}
 
-  {{$comments:= resources.getRemote (print "https://api.netlify.com/api/v1/forms/" 
+  {{$comments:= resources.GetRemote (print "https://api.netlify.com/api/v1/forms/" 
     site.Params.NetlifyCommentForm 
     "/submissions?access_token=" 
     (getenv "COMMENTS_TOKEN")) | transform.Unmarshal }} 
